@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import RateLimit from 'express-rate-limit';
 import errorMiddleware from './middleware/error.middleware';
 import config from './config';
+
 const PORT = config.port || 3000;
 
 const app = express();

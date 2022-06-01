@@ -10,7 +10,8 @@
     "format": "prettier --write src/**/*.ts",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts fix",
-    "test": "npm run build && jasmine"
+    "test": "npm run build && jasmine",
+    "migration:run": "db-migrate up"
   },
   "keywords": [],
   "author": "FathyMuhamed",
@@ -20,6 +21,7 @@
     "@types/jasmine": "^4.0.3",
     "@types/morgan": "^1.9.3",
     "@types/node": "*",
+    "@types/pg": "^8.6.5",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
@@ -35,10 +37,13 @@
     "typescript": "^4.7.2"
   },
   "dependencies": {
+    "db-migrate": "^0.11.13",
+    "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-rate-limit": "^6.4.0",
     "helmet": "^5.1.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pg": "^8.7.3"
   }
 }
