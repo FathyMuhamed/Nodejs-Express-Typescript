@@ -5,6 +5,7 @@ import RateLimit from 'express-rate-limit';
 import errorMiddleware from './middleware/error.middleware';
 import config from './config';
 
+import routes from './routes';
 const PORT = config.port || 3000;
 
 const app = express();
@@ -23,6 +24,8 @@ app.use(
   })
 );
 
+app.use('/api', routes);
+
 app.get('/', (req: Request, res: Response) => {
   res.json({
     message: 'post',
@@ -32,10 +35,10 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use(errorMiddleware);
 
-app.use((_req: Request, res: Response) => {
+app.use((_: Request, res: Response) => {
   res.status(404).json({
     message:
-      'Ohh you are lost, read the Api documentation to find your way back home',
+      'Ohh you are lost, read the API documentation to find your way back home 😂',
   });
 });
 

@@ -1,9 +1,25 @@
-import { Request, Response } from 'express';
-import { Error } from '../interfaces/error.interface';
-const errorMiddleware = (error: Error, req: Request, res: Response) => {
-  const status = error.status || 500;
-  const message = error.status || '!! somting went wrong';
+import { Response, Request, NextFunction } from 'express';
 
+class HttpException extends Error {
+  status: number;
+
+  message: string;
+
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+    this.message = message;
+  }
+}
+
+const errorMiddleware = (
+  error: HttpException,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const status = error.status || 500;
+  const message = error.message || 'Whoops!! something went wrong';
   res.status(status).json({ status, message });
 };
 
